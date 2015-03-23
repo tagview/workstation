@@ -2,7 +2,7 @@
 
 Workstation is a serie of scripts and configurations to set up a web development environment.
 
-All the scripts are indenpotent, which means it can be run multiple times safely.
+All the scripts are idempotent, which means it can be run multiple times safely.
 
 ## OSX
 
