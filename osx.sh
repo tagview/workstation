@@ -104,14 +104,41 @@ install_ruby() {
   fi
 }
 
+setup_launchctl() {
+  local service="$1"
+  local domain="homebrew.mxcl.$service"
+  local plist="$domain.plist"
+  local launchctl_file="$HOME/Library/LaunchAgents/$plist"
+
+  mkdir -p ~/Library/LaunchAgents
+
+  if [ ! -e "$launchctl_file" ]; then
+    echo "Setting up launchctl for $service"
+
+    cp "/usr/local/opt/$service/$plist" ~/Library/LaunchAgents
+
+    if launchctl list | grep -Fq "$domain"; then
+      launchctl unload "$launchctl_file" >/dev/null
+    fi
+
+    launchctl load "$launchctl_file" >/dev/null
+  else
+    echo "Launchctl already configured for $service. Skipping..."
+  fi
+}
+
 install_homebrew
 
 brew_install git
 brew_install postgresql
+setup_launchctl postgresql
 brew_install mysql
+setup_launchctl mysql
 brew_install redis
+setup_launchctl redis
 brew_install sqlite
 brew_install memcached
+setup_launchctl memcached
 brew_install vim
 brew_install imagemagick
 brew_install qt
