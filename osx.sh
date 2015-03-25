@@ -146,6 +146,7 @@ brew_install node
 brew_install ansible
 brew_install watch
 brew_install tree
+brew_install bash_completion
 
 brew_head_install arcanist
 

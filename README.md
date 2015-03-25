@@ -30,6 +30,7 @@ Note that the script will ask for your `sudo` credentials multiple times.
 - Ansible
 - Watch
 - Tree
+- Bash completion scripts
 - Arcanist: to interact with Phabricator
 - Heroku Toolbelt
 
