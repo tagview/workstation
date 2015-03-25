@@ -97,7 +97,7 @@ install_ruby() {
     bundle config --global path vendor/ruby
     bundle config --global bin_path .bin
 
-    add_to_bash_profile 'export PATH=".bin/:$PATH"'
+    add_to_bash_profile 'export PATH=".bin:bin:$PATH"'
 
     # Fix Nokogiri install by using brewed libxml2 and libxslt instead of iconv
     add_to_bash_profile "export NOKOGIRI_USE_SYSTEM_LIBRARIES=1"
