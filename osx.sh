@@ -127,6 +127,17 @@ setup_launchctl() {
   fi
 }
 
+setup_ntfs_writing() {
+  if [ ! -e /sbin/mount_ntfs.original ]; then
+    brew_cask_install osxfuse
+    brew_install ntfs-3g
+    sudo mv /sbin/mount_ntfs /sbin/mount_ntfs.original
+    sudo ln -s /usr/local/Cellar/ntfs-3g/2014.2.15/sbin/mount_ntfs /sbin/mount_ntfs
+  else
+    echo "NTFS support already configured. Skipping..."
+  fi
+}
+
 install_homebrew
 
 brew_install git
@@ -165,13 +176,9 @@ install_ruby 2.2.1
 
 brew_install heroku-toolbelt
 
-# Support for NTFS write
-brew_cask_install osxfuse
-brew_install ntfs-3g
-sudo mv /sbin/mount_ntfs /sbin/mount_ntfs.original
-sudo ln -s /usr/local/Cellar/ntfs-3g/2014.2.15/sbin/mount_ntfs /sbin/mount_ntfs
-
 # OSX Customization
+setup_ntfs_writing
+
 # Fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 2
 
