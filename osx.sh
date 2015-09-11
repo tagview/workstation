@@ -95,7 +95,7 @@ install_ruby() {
     cores=$(sysctl -n hw.ncpu)
     bundle config --global jobs $((cores - 1))
     bundle config --global path vendor/ruby
-    bundle config --global bin_path .bin
+    bundle config --global bin .bin
 
     add_to_bash_profile 'export PATH=".bin:bin:$PATH"'
 
