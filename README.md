@@ -16,6 +16,14 @@ curl -fsSL https://raw.githubusercontent.com/tagview/workstation/master/osx.sh |
 
 Note that the script will ask for your `sudo` credentials multiple times.
 
+## Ubuntu
+
+```
+curl -fsSL https://raw.githubusercontent.com/tagview/workstation/master/ubuntu.sh | sh
+```
+
+Note that the script will ask for your `sudo` credentials multiple times.
+
 ### Applications installed
 
 - Git: the latest version
