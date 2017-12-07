@@ -25,34 +25,12 @@ Note that the script will ask for your `sudo` credentials multiple times.
 - Memcache
 - Vim
 - Imagemagick
-- QT: for headless testing
+- Ruby
 - NodeJS
-- Ansible
 - Watch
 - Tree
-- Bash completion scripts
 - Arcanist: to interact with Phabricator
 - Heroku Toolbelt
-
-It also installs some compiled apps via Cask:
-
-- Macvim
-- Google Chrome
-- Firefox
-- GitX
-- Dropbox
-- Iterm2
-- VLC
-- Skype
-- Virtualbox
-
-### Ruby
-
-Ruby is configured via RBenv and installed via Ruby Build. It also installs and configures bundler to proper install some problematic gems on OSX (we are looking at you, Nokogiri).
-
-### NTFS
-
-The script will also install OSXFuse and NTFS-3g, to enable writing in NTFS volumes.
 
 ### Configuration
 
