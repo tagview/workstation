@@ -39,17 +39,6 @@ brew_install() {
   fi
 }
 
-brew_head_install() {
-  local formula="$1"
-
-  if ! brew list | grep --quiet --line-regexp "$formula"; then
-    echo "Installing formula $formula"
-    brew install --HEAD homebrew/head-only/"$formula"
-  else
-    echo "Formula $formula already installed. Skipping..."
-  fi
-}
-
 brew_cask_install() {
   local cask="$1"
 
@@ -101,6 +90,15 @@ install_ruby() {
 
     # Fix Nokogiri install by using brewed libxml2 and libxslt instead of iconv
     add_to_bash_profile "export NOKOGIRI_USE_SYSTEM_LIBRARIES=1"
+  fi
+}
+
+install_arcanist() {
+  if ! [ -d ~/.phabricator ]; then
+    mkdir ~/.phabricator
+    git clone https://github.com/phacility/libphutil.git ~/.phabricator/libphutil
+    git clone https://github.com/phacility/arcanist.git ~/.phabricator/arcanist
+    add_to_bash_profile 'export PATH="$HOME/.phabricator/arcanist/bin:$PATH"'
   fi
 }
 
@@ -159,7 +157,7 @@ brew_install watch
 brew_install tree
 brew_install bash-completion
 
-brew_head_install arcanist
+install_arcanist
 
 brew_install caskroom/cask/brew-cask
 brew_cask_install macvim
