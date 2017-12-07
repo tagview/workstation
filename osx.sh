@@ -153,16 +153,6 @@ brew_install heroku/brew/heroku
 
 install_arcanist
 
-brew_install caskroom/cask/brew-cask
-brew_cask_install macvim
-brew_cask_install google-chrome
-brew_cask_install firefox
-brew_cask_install rowanj-gitx
-brew_cask_install dropbox
-brew_cask_install iterm2
-brew_cask_install vlc
-brew_cask_install skype
-brew_cask_install virtualbox
 setup_launchctl postgresql
 setup_launchctl mysql
 setup_launchctl memcached
@@ -170,6 +160,7 @@ setup_launchctl redis
 
 install_ruby 2.4.2
 
+brew tap caskroom/cask
 
 # OSX Customization
 setup_ntfs_writing
