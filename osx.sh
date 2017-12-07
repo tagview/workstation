@@ -140,14 +140,10 @@ install_homebrew
 
 brew_install git
 brew_install postgresql
-setup_launchctl postgresql
 brew_install mysql
-setup_launchctl mysql
 brew_install redis
-setup_launchctl redis
 brew_install sqlite
 brew_install memcached
-setup_launchctl memcached
 brew_install vim
 brew_install imagemagick
 brew_install node
@@ -167,6 +163,10 @@ brew_cask_install iterm2
 brew_cask_install vlc
 brew_cask_install skype
 brew_cask_install virtualbox
+setup_launchctl postgresql
+setup_launchctl mysql
+setup_launchctl memcached
+setup_launchctl redis
 
 install_ruby 2.2.1
 
