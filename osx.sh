@@ -104,6 +104,15 @@ install_node() {
   nvm install "$version"
 }
 
+install_yarn() {
+  if ! brew list | grep --quiet --line-regexp "$formula"; then
+    echo "Installing formula yarn"
+    brew install yarn --without-node
+  else
+    echo "Yarn alrady installed. Skipping..."
+  fi
+}
+
 install_arcanist() {
   if ! [ -d ~/.phabricator ]; then
     mkdir ~/.phabricator
@@ -160,6 +169,7 @@ setup_launchctl redis
 
 install_ruby 2.4.2
 install_node 8
+install_yarn
 
 # Fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 2
