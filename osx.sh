@@ -153,6 +153,7 @@ brew_install imagemagick
 brew_install node
 brew_install watch
 brew_install tree
+brew_install heroku/brew/heroku
 
 install_arcanist
 
@@ -169,7 +170,6 @@ brew_cask_install virtualbox
 
 install_ruby 2.2.1
 
-brew_install heroku-toolbelt
 
 # OSX Customization
 setup_ntfs_writing
