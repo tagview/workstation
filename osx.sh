@@ -155,7 +155,6 @@ brew_install sqlite
 brew_install memcached
 brew_install vim
 brew_install imagemagick
-brew_install node
 brew_install watch
 brew_install tree
 brew_install heroku/brew/heroku
