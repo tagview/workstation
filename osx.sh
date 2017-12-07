@@ -39,17 +39,6 @@ brew_install() {
   fi
 }
 
-brew_cask_install() {
-  local cask="$1"
-
-  if ! brew cask list | grep --quiet --line-regexp "$cask"; then
-    echo "Installing cask $cask"
-    brew cask install "$cask"
-  else
-    echo "Cask $cask already installed. Skipping..."
-  fi
-}
-
 install_rbenv() {
   if ! command -v rbenv >/dev/null; then
     brew_install rbenv
@@ -147,17 +136,6 @@ setup_launchctl() {
   fi
 }
 
-setup_ntfs_writing() {
-  if [ ! -e /sbin/mount_ntfs.original ]; then
-    brew_cask_install osxfuse
-    brew_install ntfs-3g
-    sudo mv /sbin/mount_ntfs /sbin/mount_ntfs.original
-    sudo ln -s /usr/local/Cellar/ntfs-3g/2014.2.15/sbin/mount_ntfs /sbin/mount_ntfs
-  else
-    echo "NTFS support already configured. Skipping..."
-  fi
-}
-
 install_homebrew
 
 brew_install git
@@ -182,11 +160,6 @@ setup_launchctl redis
 
 install_ruby 2.4.2
 install_node 8
-
-brew tap caskroom/cask
-
-# OSX Customization
-setup_ntfs_writing
 
 # Fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 2
