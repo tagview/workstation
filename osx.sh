@@ -168,7 +168,7 @@ setup_launchctl mysql
 setup_launchctl memcached
 setup_launchctl redis
 
-install_ruby 2.2.1
+install_ruby 2.4.2
 
 
 # OSX Customization
