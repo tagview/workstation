@@ -150,12 +150,9 @@ brew_install memcached
 setup_launchctl memcached
 brew_install vim
 brew_install imagemagick
-brew_install qt
 brew_install node
-brew_install ansible
 brew_install watch
 brew_install tree
-brew_install bash-completion
 
 install_arcanist
 
