@@ -93,6 +93,28 @@ install_ruby() {
   fi
 }
 
+install_nvm() {
+  if ! command -v nvm >/dev/null; then
+    echo "Installing nvm"
+
+    curl --silent \
+         --fail \
+         --show-error \
+         --location \
+         https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+  else
+    echo "nvm already installed. Skipping..."
+  fi
+}
+
+install_node() {
+  local version="$1"
+
+  install_nvm
+
+  nvm install "$version"
+}
+
 install_arcanist() {
   if ! [ -d ~/.phabricator ]; then
     mkdir ~/.phabricator
@@ -159,6 +181,7 @@ setup_launchctl memcached
 setup_launchctl redis
 
 install_ruby 2.4.2
+install_node 8
 
 brew tap caskroom/cask
 
