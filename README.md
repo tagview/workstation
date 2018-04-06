@@ -16,6 +16,17 @@ curl -fsSL https://raw.githubusercontent.com/tagview/workstation/master/osx.sh |
 
 Note that the script will ask for your `sudo` credentials multiple times.
 
+### Configuration
+
+Some optioned configurations will also be enabled:
+
+- Fast keyboard repeat rate
+- Enable element inspection on NSWebView
+- Use tabs to navigate through prompts
+- Always show file extensions
+- Don't always ask for using connected external drive with Timemachine
+- Turn off keyboard illumination when it is not touched for five minutes
+
 ## Ubuntu
 
 ```
@@ -24,7 +35,7 @@ curl -fsSL https://raw.githubusercontent.com/tagview/workstation/master/ubuntu.s
 
 Note that the script will ask for your `sudo` credentials multiple times.
 
-### Applications installed
+## Applications installed
 
 - Git: the latest version
 - Postgres
@@ -40,13 +51,11 @@ Note that the script will ask for your `sudo` credentials multiple times.
 - Arcanist: to interact with Phabricator
 - Heroku Toolbelt
 
-### Configuration
-
-Some optioned configurations will also be enabled:
-
-- Fast keyboard repeat rate
-- Enable element inspection on NSWebView
-- Use tabs to navigate through prompts
-- Always show file extensions
-- Don't always ask for using connected external drive with Timemachine
-- Turn off keyboard illumination when it is not touched for five minutes
+## Contributing
+### Ubuntu
+Test the ubuntu setup with docker:
+```
+$ docker build -t ubuntu-workstation .
+$ docker run -ti ubuntu-workstation /bin/sh /home/docker/ubuntu.sh
+# the test user's password is "docker"
+```

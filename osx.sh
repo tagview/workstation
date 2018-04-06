@@ -9,6 +9,10 @@ add_to_bash_profile() {
   fi
 }
 
+refresh_session_profile() {
+  . ~/.bash_profile
+}
+
 install_homebrew() {
   if ! command -v brew >/dev/null; then
     echo "Installing Homebrew"
@@ -91,6 +95,8 @@ install_nvm() {
          --show-error \
          --location \
          https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+
+    refresh_session_profile
   else
     echo "nvm already installed. Skipping..."
   fi
@@ -105,11 +111,11 @@ install_node() {
 }
 
 install_yarn() {
-  if ! brew list | grep --quiet --line-regexp "$formula"; then
-    echo "Installing formula yarn"
+  if ! brew list | grep --quiet --line-regexp yarn; then
+    echo "Installing yarn"
     brew install yarn --without-node
   else
-    echo "Yarn alrady installed. Skipping..."
+    echo "Yarn already installed. Skipping..."
   fi
 }
 

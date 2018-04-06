@@ -4,8 +4,14 @@
 set -e
 
 add_to_bash_profile() {
-  if ! grep --quiet "$1" ~/.bashrc; then
-    echo "$1" >> ~/.bashrc
+  if ! grep --quiet "$1" $PROFILE; then
+    echo "$1" >> $PROFILE
+  fi
+}
+
+refresh_session_profile() {
+  if [ -f $PROFILE ]; then
+    . $PROFILE
   fi
 }
 
@@ -54,6 +60,8 @@ install_nvm() {
          --show-error \
          --location \
          https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+
+    refresh_session_profile
   else
     echo "nvm already installed. Skipping..."
   fi
@@ -63,9 +71,9 @@ install_yarn() {
   if ! command -v yarn >/dev/null; then
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt-get update && sudo apt-get install yarn
+    sudo apt-get update && sudo apt-get install --no-install-recommends yarn
   else
-    echo "Yarn alrady installed. Skipping..."
+    echo "Yarn already installed. Skipping..."
   fi
 }
 
@@ -77,6 +85,14 @@ install_arcanist() {
     add_to_bash_profile 'export PATH="$HOME/.phabricator/arcanist/bin:$PATH"'
   fi
 }
+
+setup_profile() {
+  export PROFILE=$1
+  touch $PROFILE
+  echo "source $PROFILE" >> ~/.bashrc
+}
+
+setup_profile ~/.bash_profile
 
 sudo apt-get update
 
