@@ -106,11 +106,9 @@ sudo apt-get install -y \
   curl \
   git \
   libffi-dev \
-  libgdbm3 \
   libgdbm-dev \
   libncurses5-dev \
-  libreadline6 \
-  libreadline6-dev \
+  libreadline-dev \
   libssl-dev \
   libyaml-dev \
   openssl \
